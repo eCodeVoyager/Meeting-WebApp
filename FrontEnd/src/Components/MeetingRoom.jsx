@@ -13,10 +13,7 @@ const MeetingRoom = () => {
   const socket = useRef(null);
 
   useEffect(() => {
-    socket.current = io(process.env.REACT_APP_SOCKET_SERVER, {
-        transports: ["websocket"],
-        });
-    );
+    socket.current = io(import.meta.env.REACT_APP_SOCKET_SERVER);
 
     socket.current.emit("join:room", { username, meetingId });
 
